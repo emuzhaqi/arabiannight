@@ -1,0 +1,388 @@
+/* =====================================================
+   THE ROYAL PALACE OF AGRABAH
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600&display=swap');
+
+/* ---------- Layout ---------- */
+
+.palace-page {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #0d0820 0%,
+    #1a0d35 25%,
+    #2d1208 55%,
+    #1a0800 80%,
+    #120500 100%
+  );
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Ceiling glow ---------- */
+
+.ceiling-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background: radial-gradient(
+    ellipse 70% 100% at 50% 0%,
+    rgba(180, 120, 20, 0.35) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ---------- Light rays ---------- */
+
+.light-rays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ray {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 210, 80, 0.18) 0%,
+    rgba(255, 170, 30, 0.08) 40%,
+    transparent 80%
+  );
+  transform-origin: top center;
+  animation: rayShimmer var(--ray-dur, 4s) ease-in-out infinite alternate;
+}
+
+@keyframes rayShimmer {
+  from { opacity: 0.4; transform: scaleX(1)   rotate(var(--ray-angle, 0deg)); }
+  to   { opacity: 1;   transform: scaleX(2.5) rotate(var(--ray-angle, 0deg)); }
+}
+
+/* ---------- Ceiling pattern ---------- */
+
+.ceiling-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  pointer-events: none;
+}
+
+.ceiling-pattern svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Columns ---------- */
+
+.columns {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.column {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.column-left  { left: 6%; }
+.column-right { right: 6%; }
+
+.column-shaft {
+  width: 40px;
+  height: 70vh;
+  background: linear-gradient(
+    90deg,
+    #3a1f00 0%,
+    #8b5e0a 20%,
+    #c9921a 40%,
+    #f0c040 50%,
+    #c9921a 60%,
+    #8b5e0a 80%,
+    #3a1f00 100%
+  );
+  border-radius: 2px;
+}
+
+.column-capital {
+  width: 60px;
+  height: 28px;
+  background: linear-gradient(
+    90deg,
+    #5a2e00,
+    #d4a017,
+    #ffe066,
+    #d4a017,
+    #5a2e00
+  );
+  border-radius: 4px 4px 0 0;
+}
+
+.column-base {
+  width: 60px;
+  height: 18px;
+  background: linear-gradient(
+    90deg,
+    #5a2e00,
+    #d4a017,
+    #ffe066,
+    #d4a017,
+    #5a2e00
+  );
+  border-radius: 0 0 4px 4px;
+}
+
+/* ---------- Jewels ---------- */
+
+.jewels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.jewel {
+  position: absolute;
+  border-radius: 50%;
+  animation: jewelFloat var(--j-dur, 4s) var(--j-del, 0s) ease-in-out infinite alternate;
+  filter: blur(0.3px);
+}
+
+@keyframes jewelFloat {
+  from { transform: translateY(0) scale(1);    opacity: 0.7; }
+  to   { transform: translateY(-10px) scale(1.2); opacity: 1;   }
+}
+
+/* ---------- Floor ---------- */
+
+.palace-floor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+}
+
+.palace-floor svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Arch frame ---------- */
+
+.arch-frame {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* ---------- Main content ---------- */
+
+.palace-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 60px 20px 140px;
+  text-align: center;
+}
+
+/* ---------- Crown ---------- */
+
+.crown-container {
+  animation: crownFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 200, 50, 0.8));
+}
+
+@keyframes crownFloat {
+  0%, 100% { transform: translateY(0)    rotate(-1deg); }
+  50%       { transform: translateY(-10px) rotate(1deg);  }
+}
+
+.crown-svg {
+  width: 110px;
+  height: 80px;
+}
+
+/* ---------- Title ---------- */
+
+.palace-ornament {
+  font-size: 1.6rem;
+  color: #9b59b6;
+  letter-spacing: 10px;
+  text-shadow: 0 0 14px rgba(155, 89, 182, 0.9);
+  animation: palatialPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes palatialPulse {
+  from { opacity: 0.5; text-shadow: 0 0 8px  rgba(155, 89, 182, 0.5); }
+  to   { opacity: 1;   text-shadow: 0 0 28px rgba(200, 100, 255, 1);   }
+}
+
+.palace-title-container {
+  position: relative;
+}
+
+.palace-title-glow {
+  position: absolute;
+  inset: -40px -80px;
+  background: radial-gradient(ellipse, rgba(155, 89, 182, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: palaceGlowPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes palaceGlowPulse {
+  from { transform: scale(0.9); opacity: 0.5; }
+  to   { transform: scale(1.1); opacity: 1;   }
+}
+
+.palace-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.2rem, 6vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  position: relative;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffe066 15%,
+    #d4a017 45%,
+    #9b59b6 70%,
+    #6c3483 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  filter:
+    drop-shadow(0 0 10px rgba(255, 215, 0, 0.9))
+    drop-shadow(0 0 25px rgba(155, 89, 182, 0.6))
+    drop-shadow(0 0 50px rgba(100, 40, 150, 0.4));
+
+  animation: palaceShimmer 6s ease-in-out infinite alternate;
+}
+
+@keyframes palaceShimmer {
+  from {
+    filter:
+      drop-shadow(0 0 8px  rgba(255, 215, 0, 0.8))
+      drop-shadow(0 0 20px rgba(155, 89, 182, 0.5))
+      drop-shadow(0 0 40px rgba(100, 40, 150, 0.3));
+  }
+  to {
+    filter:
+      drop-shadow(0 0 15px rgba(255, 240, 100, 1))
+      drop-shadow(0 0 35px rgba(200, 120, 255, 0.9))
+      drop-shadow(0 0 70px rgba(140, 60, 200, 0.6));
+  }
+}
+
+.palace-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.7rem, 1.8vw, 1rem);
+  letter-spacing: 0.35em;
+  color: #b8a0d4;
+  margin-top: 10px;
+  opacity: 0.8;
+  text-shadow: 0 0 10px rgba(155, 89, 182, 0.5);
+}
+
+/* ---------- Tagline ---------- */
+
+.palace-tagline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.85rem, 2vw, 1.15rem);
+  color: rgba(200, 170, 240, 0.65);
+  letter-spacing: 0.18em;
+  font-style: italic;
+  animation: palaceTagFade 7s ease-in-out infinite alternate;
+}
+
+@keyframes palaceTagFade {
+  from { opacity: 0.35; }
+  to   { opacity: 0.85; }
+}
+
+/* ---------- User badge ---------- */
+
+.user-badge {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(30, 10, 50, 0.7);
+  border: 1px solid rgba(155, 89, 182, 0.4);
+  border-radius: 2px;
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.user-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #b8a0d4;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid rgba(155, 89, 182, 0.4);
+  color: #9b59b6;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  cursor: pointer;
+  border-radius: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.logout-btn:hover {
+  border-color: #9b59b6;
+  color: #d4a0ff;
+}
+
+/* ---------- Jewel border ---------- */
+
+.jewel-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  opacity: 0.4;
+  pointer-events: none;
+}

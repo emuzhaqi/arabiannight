@@ -1,0 +1,80 @@
+{
+  "realm": "agrabah",
+  "enabled": true,
+  "displayName": "Agrabah Realm",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "sslRequired": "none",
+  "roles": {
+    "realm": [
+      {
+        "name": "agrabah-access",
+        "description": "Access to the Agrabah city page — all citizens"
+      },
+      {
+        "name": "bazaar-access",
+        "description": "Access to the Bazaar night market"
+      },
+      {
+        "name": "palace-access",
+        "description": "Access to the Royal Palace"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "city-app",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": [
+        "http://localhost/*",
+        "http://frontend/*"
+      ],
+      "webOrigins": [
+        "http://localhost",
+        "http://localhost:3000"
+      ],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:3000"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "aladdin",
+      "enabled": true,
+      "email": "aladdin@agrabah.com",
+      "firstName": "Aladdin",
+      "lastName": "of Agrabah",
+      "credentials": [
+        { "type": "password", "value": "monkeyabu", "temporary": false }
+      ],
+      "realmRoles": ["agrabah-access", "bazaar-access"]
+    },
+    {
+      "username": "jasmine",
+      "enabled": true,
+      "email": "jasmine@agrabah.com",
+      "firstName": "Jasmine",
+      "lastName": "Princess of Agrabah",
+      "credentials": [
+        { "type": "password", "value": "royalpalace", "temporary": false }
+      ],
+      "realmRoles": ["agrabah-access", "palace-access"]
+    },
+    {
+      "username": "genie",
+      "enabled": true,
+      "email": "genie@lamp.com",
+      "firstName": "Genie",
+      "lastName": "of the Lamp",
+      "credentials": [
+        { "type": "password", "value": "threewishes", "temporary": false }
+      ],
+      "realmRoles": ["agrabah-access", "bazaar-access", "palace-access"]
+    }
+  ]
+}
